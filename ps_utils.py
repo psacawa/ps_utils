@@ -2,6 +2,7 @@
 
 from typing import Optional, List
 from tabulate import tabulate
+from collections import OrderedDict
 
 def print_tab_obj(it, attr):
     from tabulate import tabulate
@@ -23,10 +24,15 @@ def print_attributes(obj, attr:Optional [List[str]]= None, trim=True, use_str=Tr
     ncolumns = 80
     if attr == None:
         attr = dir (obj)
-    table = [
-        [at, getattr (obj,at)]
-        for at in attr
-    ]
+    table = OrderedDict ()
+    for at in dir (obj):
+        try:
+            table[at] = getattr (obj,at)
+        except Exception as e:
+            table [at] = ""
+    table = list (table.items ())
+    table = [list (kv_pair) for kv_pair in table]
+
     for row in table:
         if use_str:
             row[1] = str (row[1])
