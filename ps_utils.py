@@ -19,14 +19,15 @@ def print_tab_dict(it, attr):
     print(tabulate(data, headers=attr))
 
 
-def print_attributes(obj, attr: Optional[List[str]] = None, trim=True, use_str=True):
+def print_attributes(obj, attr: Optional[List[str]] = None, trim=True, use_str=True,
+        ncolumns=80):
     """
     Print attribute names in one column, values in the other. If not list of 
     attributes is supplies, the attributes are gather from `dir()`.
     :trim: If true, trim value column to max `ncolumns` ncolumns (80)
     :use_str: Jeśli nieprawda, to użyk `repr()` zamiast `str()`
     """
-    ncolumns = 80
+    #  ncolumns = 80
     if attr == None:
         attr = dir(obj)
     table = OrderedDict()
