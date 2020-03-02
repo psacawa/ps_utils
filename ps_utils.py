@@ -49,7 +49,7 @@ def print_attributes(obj, attr: Optional[List[str]] = None, trim=True, use_str=T
     print(tabulate(table, headers=["name", "value"]))
 
 
-def print_sql(raw_sql: str):
+def print_sql(raw_sql: str, style = "colorful"):
     """Wrapper to format raw SQL statements."""
     import sqlparse
     from pygments import highlight
@@ -57,7 +57,7 @@ def print_sql(raw_sql: str):
     from pygments.formatters import TerminalTrueColorFormatter
     from pygments.styles import get_style_by_name
 
-    style = get_style_by_name("colorful")
+    style = get_style_by_name(style)
     formatter = TerminalTrueColorFormatter(style=style)
     lexer = SqlLexer()
     formatted_sql = sqlparse.format(raw_sql, reindent=True, keyword_case="upper")
