@@ -51,6 +51,8 @@ def print_attributes(obj, attr: Optional[List[str]] = None, trim=True, use_str=T
 
 def print_sql(raw_sql: str, style = "colorful"):
     """Wrapper to format raw SQL statements."""
+    # na przpadek gdybysmy dostali np. SQLAlchemy query
+    raw_sql = str (raw_sql)
     import sqlparse
     from pygments import highlight
     from pygments.lexers import SqlLexer
