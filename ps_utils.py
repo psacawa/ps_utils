@@ -49,7 +49,7 @@ def print_attributes(obj, attr: Optional[List[str]] = None, trim=True, use_str=T
     print(tabulate(table, headers=["name", "value"]))
 
 
-def print_sql(raw_sql: str, style = "colorful"):
+def print_sql(raw_sql: str, style = "vim"):
     """Wrapper to format raw SQL statements."""
     # na przpadek gdybysmy dostali np. SQLAlchemy query
     raw_sql = str (raw_sql)
